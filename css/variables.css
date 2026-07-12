@@ -1,0 +1,63 @@
+/* 사용자앱 색상지정 시작 */
+:root {
+    --color-primary: #E86364;
+    --color-primary-light: #FFA6A6;
+    --color-primary-xlight: #FFEDED;
+    --color-primary-strong: #de1e1b;
+
+    --color-text: #001d35;
+    --color-text-muted: #434343;
+    --color-text-light: #676767;
+
+    --color-line: #DDDDDD;
+    --color-bg: #F9F9F9;
+    --color-bg-sub: #F1F2F3;
+    --color-gray: #D9D9D9;
+
+    --color-white: #ffffff;
+    --color-tag: #379EF3;
+}
+
+/* 사용자앱 색상지정 끝 */
+
+/* 사용자앱 폰트지정 시작 */
+:root {
+    --font-size-caption: 12px;
+    --font-size-helper: 13px;
+    --font-size-body-sm: 14px;
+    --font-size-body-md: 15px;
+    --font-size-body: 16px;
+    --font-size-page: 18px;
+    --font-size-heading-sm: 20px;
+    --font-size-heading-md: 24px;
+    --font-size-display: 30px;
+}
+
+/* 사용자앱 폰트지정 끝 */
+
+/* 사용자앱 패딩지정 시작 */
+:root {
+    --space-xxs: 4px;
+    --space-xxs-plus: 6px;
+    --space-xs: 8px;
+    --space-xs-plus: 10px;
+    --space-sm: 12px;
+    --space-sm-plus: 14px;
+    --space-md: 16px;
+    --space-md-plus: 18px;
+    --space-lg: 24px;
+    --space-lg-minus: 20px;
+    --space-lg-plus: 22px;
+    --space-xl: 32px;
+    --space-xl-plus: 36px;
+    --space-xxl: 40px;
+}
+
+/* 사용자앱 패딩지정 끝 */
+
+/* 사용자앱 그림자 시작 */
+:root {
+    --box-shadow-light: 3px 3px 2px rgba(150, 150, 150, 0.15);
+}
+
+/* 사용자앱 그림자 끝 */

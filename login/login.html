@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>하나로케어</title>
+
+
+  <link rel="stylesheet" href="../css/reset.css">
+  <link rel="stylesheet" href="../css/variables.css">
+  <link rel="stylesheet" href="../css/font.css">
+  <link rel="stylesheet" href="../css/common.css">
+  <link rel="stylesheet" href="../css/style.css">
+
+  <script src="../js/jquery-1.12.4.min.js"></script>
+  <script src="../js/custom.js"></script>
+</head>
+
+<body>
+  <div class="wrap">
+    <div class="container login-main">
+      <div class="login-header">
+        <img class="login-logo" src="../images/logo.png" alt="로고">
+        <h2 class="login-title">하나로케어 로그인</h2>
+      </div>
+      <div class="login-body">
+        <form class="login-form">
+          <div class="login-group">
+            <input type="text" id="user-id" class="login-field" placeholder="아이디 입력">
+          </div>
+          <div class="login-group">
+            <input type="password" id="user-pw" class="login-field" placeholder="비밀번호 입력">
+          </div>
+          <div class="login-checkbox-row">
+            <label class="login-checkbox-label">
+              <input type="checkbox" id="save-id">
+              아이디 저장
+            </label>
+          </div>
+        </form>
+        <div class="login-btn">
+          <button class="btn btn-pink" onclick="openLoginFailModal()">로그인</button>
+          <!-- <button class="btn btn-gray" disabled>로그인</button> -->
+          <button class="btn btn-submit" onclick="location.href='loginRegister.html'">회원가입</button>
+        </div>
+        <div class="login-find-row">
+          <a href="../login/loginRecoverID.html" class="login-find-btn">아이디 찾기</a>
+          <a href="../login/loginRecoverPassword.html" class="login-find-btn">비밀번호 찾기</a>
+        </div>
+      </div>
+      <div class="login-sns">
+        <span class="sns-title">SNS 로그인</span>
+        <div class="sns-btn">
+          <button class="sns-circle kakao" onclick="location.href='loginSNS.html'">
+            <img src="../images/logo-kakao.png" alt="카카오 로그인">
+          </button>
+          <button class="sns-circle naver">
+            <img src="../images/logo-naver.png" alt="네이버 로그인">
+          </button>
+        </div>
+      </div>
+      <div class="login-copyright">
+        Copyright © 2025 HANAROCARE. All rights reserved
+      </div>
+    </div>
+  </div>
+
+  <!-- 모달 -->
+  <div id="loginFailModal" class="modal">
+    <div class="modal-content">
+      <div class="modal-icon">
+        <div class="complete-icon">
+          <span class="material-symbols-outlined small-icon exclamation-icon">
+            <img src="../icon/exclamation.svg" alt="">
+          </span>
+        </div>
+      </div>
+      <div class="modal-text mb-20">
+        <h2 class="modal-summury">로그인에 실패하였습니다.</h2>
+        <p class="modal-message">아이디와 비밀번호를 확인 후<br>다시 시도해주세요.</p>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-pink" onclick="closeLoginFailModal()">확인</button>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

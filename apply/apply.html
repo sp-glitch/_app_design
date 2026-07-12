@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>하나로케어</title>
+
+
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/variables.css">
+    <link rel="stylesheet" href="../css/font.css">
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/style.css">
+
+    <script src="../js/jquery-1.12.4.min.js"></script>
+    <script src="../js/custom.js"></script>
+</head>
+
+<body>
+    <div class="wrap">
+        <header id="Category">
+            <div class="container">
+                <button class="category-back" onclick="history.back();">
+                    <span class="material-symbols-outlined">
+                        <img src="../icon/chevron_left.svg" alt="">
+                    </span>
+                </button>
+                <h1 class="category-title">
+                    간병인 신청
+                </h1>
+            </div>
+        </header>
+        <main class="content apply-main">
+            <div class="progress-box">
+                <div class="progress-bar">
+                    <div class="step" id="step1"></div>
+                    <div class="step" id="step2"></div>
+                    <div class="step" id="step3"></div>
+                </div>
+            </div>
+            <div class="progress-content container">
+                <div class="step-content active">
+                    <div class="form-section">
+                        <div class="form-header">
+                            <h2 class="form-title">기본 정보</h2>
+                            <p class="form-description">기본 정보를 모두 입력해주세요.</p>
+                        </div>
+                        <div class="form-body">
+                            <div class="form-group">
+                                <label class="form-label" for="region">지역</label>
+                                <div class="select-row">
+                                    <select id="region1" class="select-custom" name="region1">
+                                        <option value="">시/도</option>
+                                        <option value="seoul">서울</option>
+                                        <option value="busan">부산</option>
+                                        <option value="incheon">인천</option>
+                                    </select>
+
+                                    <select id="region2" class="select-custom" name="region2">
+                                        <option value="">구/군</option>
+                                        <option value="gangnam">강남구</option>
+                                        <option value="jongno">종로구</option>
+                                        <option value="yeongdo">영도구</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="place">장소</label>
+                                <div class="option-box">
+                                    <input type="radio" id="home" name="place" value="home" hidden />
+                                    <label for="home" class="select-option">자택</label>
+                                    <input type="radio" id="hospital" name="place" value="hospital" hidden />
+                                    <label for="hospital" class="select-option">병원(의료기관)</label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="place">주소</label>
+                                <div class="input-box mb-12">
+                                    <input type="text" id="place" class="input-text" placeholder="주소 입력" />
+                                    <button class="btn btn-form" onclick="openModal()">주소 검색</button>
+                                </div>
+                                <input type="text" id="place" class="input-text" placeholder="상세주소 입력(선택사항)" />
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="period">간병 기간</label>
+                                <div class="period-box mb-12">
+                                    <div class="period-item">
+                                        <label class="period-title" for="start-date">간병 시작일</label>
+                                        <div class="date-wrapper">
+                                            <input type="date" id="start-date" class="date-input">
+                                            <span class="material-symbols-outlined calendar-icon">
+                                                <img src="../icon/calendar_month.svg" alt="">
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="period-item">
+                                        <label class="period-title" for="end-date">간병 종료일</label>
+                                        <div class="date-wrapper">
+                                            <input type="date" id="end-date" class="date-input">
+                                            <span class="material-symbols-outlined calendar-icon">
+                                                <img src="../icon/calendar_month.svg" alt="">
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <span class="form-label">간병일 수</span>
+                                <span class="form-description">00일</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="step-content">
+                    <div class="form-section">
+                        <div class="form-header flex-header">
+                            <div class="header-text">
+                                <h2 class="form-title">환자 정보</h2>
+                                <p class="form-description">환자 정보를 모두 입력해주세요.</p>
+                            </div>
+                            <div class="header-button">
+                                <button class="btn-fetch" onclick="openFetchModal()">등록 환자정보 가져오기</button>
+                            </div>
+                        </div>
+                        <div class="form-body">
+                            <div class="form-group">
+                                <label class="form-label" for="patient-name">환자명</label>
+                                <input type="text" id="patient-name" name="patientName" class="input-text"
+                                    placeholder="환자명 입력" />
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="gender-male">성별</label>
+                                <div class="option-box">
+                                    <input type="radio" id="gender-male" name="gender" value="male" hidden />
+                                    <label for="gender-male" class="select-option">남</label>
+                                    <input type="radio" id="gender-female" name="gender" value="female" hidden />
+                                    <label for="gender-female" class="select-option">여</label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="flex-label">
+                                    <label class="form-label" for="patient-phone">환자 휴대폰</label>
+                                </div>
+                                <div class="input-box mb-12">
+                                    <input type="text" id="patient-phone" name="patientPhone" class="input-text"
+                                        placeholder="-없이 숫자만 입력" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="patient-birthdate">생년월일</label>
+                                <input type="text" id="patient-birthdate" name="patientBirthdate" class="input-text"
+                                    placeholder="숫자만 입력(예시:19730215)" />
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="patient-height-weight">키 / 몸무게</label>
+                                <div class="input-row">
+                                    <div class="input-wrapper">
+                                        <input type="text" id="patient-height" name="patientHeight" class="input-text"
+                                            placeholder="숫자만 입력" />
+                                        <span>cm</span>
+                                    </div>
+                                    <div class="input-wrapper">
+                                        <input type="text" id="patient-weight" name="patientWeight" class="input-text"
+                                            placeholder="숫자만 입력" />
+                                        <span>kg</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="admission-reason">입원사유</label>
+                                <textarea id="admission-reason" class="form-note mb-8" name="admissionReason"
+                                    placeholder="입원사유 입력" maxlength="50" oninput="updateFormCount()"></textarea>
+                                <div class="form-count" id="formCountAdmissionReason">0/50</div>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">환자 증상</label>
+                                <div class="symptom-wrapper">
+                                    <div class="symptom-row">
+                                        <span class="select-label">의식상태</span>
+                                        <select id="consciousness" class="select-custom" name="consciousness">
+                                            <option value="">환자 의식상태 선택</option>
+                                        </select>
+                                    </div>
+                                    <div class="symptom-row">
+                                        <span class="select-label">식사도움</span>
+                                        <select id="mealAssist" class="select-custom" name="mealAssist">
+                                            <option value="">식사도움 여부 선택</option>
+                                        </select>
+                                    </div>
+                                    <div class="symptom-row">
+                                        <span class="select-label">움직임도움</span>
+                                        <select id="mobilityAssist" class="select-custom" name="mobilityAssist">
+                                            <option value="">움직임도움 여부 선택</option>
+                                        </select>
+                                    </div>
+                                    <div class="symptom-row">
+                                        <span class="select-label">화장실도움</span>
+                                        <select id="toiletAssist" class="select-custom" name="toiletAssist">
+                                            <option value="">화장실도움 여부 선택</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">기타 환자상태 (중복선택)</label>
+                                <div class="state-grid">
+                                    <button type="button" class="state-option">피딩</button>
+                                    <button type="button" class="state-option">재활</button>
+                                    <button type="button" class="state-option">석션</button>
+                                    <button type="button" class="state-option">욕창</button>
+                                    <button type="button" class="state-option">장루</button>
+                                    <button type="button" class="state-option">투석</button>
+                                    <button type="button" class="state-option">치매</button>
+                                    <button type="button" class="state-option">섬망</button>
+                                    <button type="button" class="state-option">전신마비</button>
+                                    <button type="button" class="state-option">하반신마비</button>
+                                    <button type="button" class="state-option">편마비</button>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="patient-memo">메모(선택사항)</label>
+                                <textarea id="patient-memo" class="form-note mb-8" name="patientMemo"
+                                    placeholder="환자정보와 관련한 메모 입력" maxlength="50" oninput="updateFormCount()"></textarea>
+                                <div class="form-count" id="formCountPatientMemo">0/50</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="step-content">
+                    <div class="form-section">
+                        <div class="form-header">
+                            <h2 class="form-title">민감정보 수집 · 이용 동의</h2>
+                        </div>
+                        <div class="form-body">
+
+                            <div class="info-box">
+                                <div class="info-title">
+                                    <span class="material-symbols-outlined info-icon">
+                                        <img src="../icon/error.svg" alt="">
+                                    </span>
+                                    민감정보란?
+                                </div>
+                                <p class="info-desc">
+                                    사상·신념, 노동조합·정당의 가입탈퇴, 정치적 견해, 건강, 성생활 등에 관한 정보, 유전정보, 범죄경력자료, 개인의 신체·생리·행동적 특징에 관한
+                                    정보로서 특정 개인을 알아볼 목적으로 일정한 기술적 수단을 통해 생성한 정보, 인종이나 민족에 관한 정보
+                                </p>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="patient-memo">신청인 본인 확인</label>
+                                <p class="info-desc mb-12">
+                                    신청인은 환자 본인이십니까?
+                                </p>
+                                <div class="option-box">
+                                    <input type="radio" id="consenter-patient" name="consenter" value="patient"
+                                        hidden />
+                                    <label for="consenter-patient" class="select-option">환자/본인</label>
+                                    <input type="radio" id="consenter-guardian" name="consenter" value="guardian"
+                                        hidden />
+                                    <label for="consenter-guardian" class="select-option">보호자</label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="patient-memo">동의 여부</label>
+                                <p class="info-desc mb-12">
+                                    하나로케어 회원은 민감정보를 수집 처리하는 것에 대한 동의를
+                                    거부할 권리가 있습니다. 다만 동의를 거부할 경우 하나로케어가
+                                    제공하는 간병인 신청서비스 이용에 제한이 있을 수 있습니다.
+                                </p>
+                                <p class="info-desc mb-12">
+                                    • 수집 목적 : 간병인 신청 정보를 통한 간병인 매칭 활용
+                                    • 수집 항목 : 기본정보, 환자정보 등 간병인 신청 입력정보 일체
+                                    • 보유 및 이용기간 : 회원 탈퇴일로부터 3년
+                                </p>
+                                <p class="info-desc mb-12">
+                                    민감정보 수집 및 이용에 대한 안내사항을 읽고 동의합니다.
+                                </p>
+                                <div class="option-box mb-12">
+                                    <input type="radio" id="consent-yes" name="consent" value="yes" hidden />
+                                    <label for="consent-yes" class="select-option">동의함</label>
+
+                                    <input type="radio" id="consent-no" name="consent" value="no" hidden />
+                                    <label for="consent-no" class="select-option">동의안함</label>
+                                </div>
+                                <div class="checkbox-container">
+                                    <input type="checkbox" id="save-patient-info" name="savePatientInfo" />
+                                    <label for="save-patient-info">등록 환자정보 저장</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <button id="nextStep" class="btn btn-pink">다음</button>
+                <!-- <button id="nextStep" class="btn btn-pink">간병인 신청하기</button> -->
+                <!-- <button id="nextStep" class="btn btn-gray">다음</button> -->
+                <!-- <button id="nextStep" class="btn btn-gray">간병인 신청하기</button> -->
+            </div>
+
+            <!-- 모달 -->
+            <div id="addressModal" class="modal">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <span class="modal-title">주소 검색</span>
+                        <button class="close-button" onclick="closeModal()">
+                            <span class="material-symbols-outlined">
+                                <img src="../icon/close.svg" alt="">
+                            </span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="modal-group">
+                            <div class="modal-search">
+                                <input type="text" class="search-input" placeholder="도로명, 건물명, 지번 입력">
+                                <span class="material-symbols-outlined search-icon">
+                                    <img src="../icon/search.svg" alt="">
+                                </span>
+                            </div>
+                        </div>
+                        <div class="modal-group">
+                            <div class="example-title">입력예시</div>
+                            <div class="modal-example">
+                                <div class="example-column">
+                                    <div class="example-type">도로명 + 건물번호</div>
+                                    <div class="example-text">판교역로235, 제주 첨단로242</div>
+                                </div>
+                                <div class="example-column">
+                                    <div class="example-type">지역명(동/리) + 번지</div>
+                                    <div class="example-text">삼평동 681, 제주 영평동2181</div>
+                                </div>
+                                <div class="example-column">
+                                    <div class="example-type">지역명(동/리), 건물명(아파트명)</div>
+                                    <div class="example-text">분당주공, 연수동 주공3차</div>
+                                </div>
+                                <div class="example-column">
+                                    <div class="example-type">사서함명 + 번호</div>
+                                    <div class="example-text">예) 분당우체국사서함1~100</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="fetchPatientModal" class="modal">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <span class="modal-title">등록 환자정보</span>
+                        <button class="close-button" onclick="closeFetchModal()">
+                            <span class="material-symbols-outlined">
+                                <img src="../icon/close.svg" alt="">
+                            </span>
+                        </button>
+                    </div>
+                    <div class="modal-body mb-20">
+                        <div class="form-inside">
+                            <span class="inside-label">등록 환자정보</span>
+                            <span class="inside-value">2개</span>
+                        </div>
+                        <div class="card-list">
+                            <div class="card-group">
+                                <div class="info-row">
+                                    <span class="info-label">환자명</span>
+                                    <span class="info-value">김길동</span>
+                                </div>
+                                <div class="info-row">
+                                    <span class="info-label">성별</span>
+                                    <span class="info-value">여</span>
+                                </div>
+                                <div class="info-row">
+                                    <span class="info-label">생년월일</span>
+                                    <span class="info-value">1956-12-19</span>
+                                </div>
+                            </div>
+                            <div class="card-group">
+                                <div class="info-row">
+                                    <span class="info-label">환자명</span>
+                                    <span class="info-value">오동길</span>
+                                </div>
+                                <div class="info-row">
+                                    <span class="info-label">성별</span>
+                                    <span class="info-value">남</span>
+                                </div>
+                                <div class="info-row">
+                                    <span class="info-label">생년월일</span>
+                                    <span class="info-value">1946-05-31</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-line" onclick="closeFetchModal()">취소</button>
+                        <button class="btn btn-pink" onclick="importPatient()">가져오기</button>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+
+</html>

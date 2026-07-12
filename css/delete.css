@@ -1,0 +1,40 @@
+/* 지우기 */
+.wrap {
+  margin: 0 auto;
+
+  max-width: 375px;
+  min-width: 320px;
+  width: 100%;
+
+  overflow-x: auto;
+}
+
+.container {
+  margin: 0 auto;
+  padding: 0 var(--space-lg-minus);
+
+  max-width: 375px;
+  width: 100%;
+}
+
+  /* 375px ~ 419px 사이 */
+  @media (min-width: 375px) and (max-width: 419px) {
+    .container {
+      max-width: 375px;
+    }
+  }
+
+  /* 420px ~ 768px 사이 */
+  @media (min-width: 420px) and (max-width: 750px) {
+    .container {
+      max-width: 375px;
+    }
+  }
+
+  /* 768px 이상 */
+  @media (min-width: 750px) {
+    .container {
+      width: 375px;
+      margin: 0 auto;
+    }
+  }
